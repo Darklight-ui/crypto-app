@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master  # Adjust if you're using a different branch
+      - master
 
 jobs:
   build:
@@ -17,10 +17,10 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '21'
+          node-version: '18'
 
       - name: Install dependencies
-        uses: bahmutov/npm-install@v1
+        run: npm install
 
       - name: Build project
         run: npm run build
@@ -35,7 +35,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'  # Use correct branch name
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Download artifact
