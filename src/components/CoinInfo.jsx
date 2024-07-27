@@ -46,11 +46,11 @@ const CoinInfo = ({coin}) => {
           </table>
         </div>
         <div className="flex flex-col items-center text-center justify-center my-3 mx-auto ">
-          <div className="flex justify-between mx-auto w-full md:max-w-[700px] gap-3 p-3 my-3 shadow-xl">
-            <div className="flex flex-col w-fit">
+          <div className="flex flex-col md:flex-row justify-between mx-auto w-full md:max-w-[700px] gap-3 p-3 my-3 shadow-xl">
+            <div className="flex flex-col">
               <div className="flex p-3 justify-between gap-3 border-b my-3">
               <p className='font-semibold font-Ubuntu'>24 Hour Low</p>
-              <p>{coin.market_data?.low_24h.usd.low_24h ? <p>{coin.market_data.low_24h.usd}</p> : null}</p>
+              <p>{coin.market_data?.low_24h ? <p>{coin.market_data.low_24h.usd}</p> : null}</p>
               </div>
               <div className="flex p-3 justify-between gap-3 border-b my-3">
               <p className='font-semibold font-Ubuntu'>24 Hour High</p> 
@@ -69,11 +69,9 @@ const CoinInfo = ({coin}) => {
             </div>
           </div>
           <div className="p-3 shadow-xl md:w-[700px] w-[500px]">
-            <div className="about">
-              <p className='font-semibold text-3xl p-3 font-Rubik uppercase'>About</p> 
-              <p className='text-lg text-justify' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(coin.description ? coin.description.en : '')}}></p>
+              <p className='font-semibold text-lg p-3 font-Rubik uppercase'>About</p> 
+              <p className='text-sm text-justify' dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(coin.description ? coin.description.en : '')}}></p>
             </div>
-          </div>
         </div>
     </div> 
     </>
